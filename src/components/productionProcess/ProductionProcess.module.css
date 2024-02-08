@@ -1,0 +1,9 @@
+.productionWraper {
+  width: 100%;
+  height: auto;
+  padding: 2%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #322147;
+}
