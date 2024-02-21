@@ -1,8 +1,16 @@
 import styles from "./Intro.module.css";
+import YourOwnWandImage from "../../assets/images/yourOwnWand.png";
 function Intro() {
   return (
     <div className={styles.introWraper}>
-      <div className={styles.img} />
+      <div className={styles.imgContainer}>
+        <img
+          className={styles.img}
+          src={YourOwnWandImage}
+          alt="Your Own Wand"
+        />
+      </div>
+
       <h2>Desperte a Magia da Personalização</h2>
       <p>
         Na Kathelie Varinhas, adentramos o mundo encantado da magia

@@ -15,7 +15,7 @@
   width: 20%;
   height: 100%;
   max-height: 100%;
-  background-image: url("../../public/kathelieLogo.svg");
+  background-image: url("../../assets/images/kathelieLogo.svg");
   background-size: 100%;
   background-position: center;
   background-repeat: no-repeat;
@@ -23,7 +23,8 @@
   transition: 0.3s;
 }
 .logo:hover {
-  filter: drop-shadow(8px 8px 10px rgba(255, 0, 0, 0.5));
+  width: 22%;
+  filter: drop-shadow(8px 8px 10px #5727b3);
 }
 .navSection {
   width: 100%;

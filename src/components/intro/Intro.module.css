@@ -1,5 +1,6 @@
 .introWraper {
-  width: 100%;
+  margin: 0 auto;
+  width: 80%;
   height: auto;
   padding: 2%;
   display: flex;
@@ -7,19 +8,25 @@
   justify-content: center;
   align-items: center;
 }
-.img {
-  box-shadow: 0px 0px 6px 4px #5727b3;
-  border-radius: 24px;
-  width: 40%;
-  height: 320px;
+.imgContainer {
+  position: relative;
+
+  width: 80%;
+  height: auto;
   max-height: 100%;
-  background-image: url("./image/yourOwnWand.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+}
+
+.img {
+  margin: 0 auto;
+  border-radius: 24px;
+  width: 60%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0px 0px 6px #5727b3);
   opacity: 0;
   animation: fadeIn 2.5s forwards;
 }
+
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -47,7 +54,7 @@ h2 {
   }
 }
 p {
-  width: 50%;
+  width: 60%;
   text-align: justify;
   animation: floating 5s infinite;
 }
@@ -60,5 +67,13 @@ p {
   }
   100% {
     transform: translate(0, -0px);
+  }
+}
+@media screen and (max-width: 600px) {
+  .img {
+    width: 100%;
+  }
+  p {
+    width: 90%;
   }
 }
