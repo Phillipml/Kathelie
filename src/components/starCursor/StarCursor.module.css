@@ -11,7 +11,7 @@
   background-color: #fff;
   border-radius: 50%;
   opacity: 0.5;
-  animation: twinkle 5s infinite;
+  animation: twinkle 2s infinite;
 }
 
 @keyframes twinkle {

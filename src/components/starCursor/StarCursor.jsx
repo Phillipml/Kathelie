@@ -1,5 +1,3 @@
-// StarCursor.js
-
 import React, { useState, useEffect } from "react";
 import styles from "./StarCursor.module.css";
 
@@ -26,9 +24,7 @@ const StarCursor = () => {
     const clearStars = setInterval(() => {
       setPositions((prevPositions) => {
         const currentTime = Date.now();
-        return prevPositions.filter(
-          (pos) => currentTime - pos.createdAt < 100 // Remove estrelas "travadas" por mais de 1 segundo
-        );
+        return prevPositions.filter((pos) => currentTime - pos.createdAt < 500);
       });
     }, 500);
 
