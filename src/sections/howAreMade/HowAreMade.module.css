@@ -1,0 +1,35 @@
+.videoContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+}
+
+.videoWrapper {
+  position: relative;
+  margin: 0 auto;
+  padding-bottom: 2%;
+  width: 100%;
+  max-width: 800px;
+}
+
+.video {
+  position: relative;
+  top: 0;
+  left: 25%;
+  width: 50%;
+  transform: translate(-50% -50%);
+  box-shadow: 0 0 4cqi #592b99;
+  animation: glow infinite 2s;
+}
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 40px #592b99;
+  }
+  50% {
+    box-shadow: 0 0 60px #322147;
+  }
+  100% {
+    box-shadow: 0 0 40px #592b99;
+  }
+}
