@@ -20,6 +20,7 @@
   color: #fff;
   cursor: pointer;
   animation: floating 1s infinite;
+  text-decoration: none;
 }
 
 .btn:hover {
@@ -35,4 +36,16 @@
   width: 100%;
   font-size: 20px;
   text-align: center;
+}
+
+@media screen and (max-width: 800px) {
+  .btn {
+    width: 30%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .btn {
+    width: 50%;
+  }
 }

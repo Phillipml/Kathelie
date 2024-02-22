@@ -1,9 +1,10 @@
+import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 function Header() {
   return (
     <nav className={styles.header}>
       <div className={styles.logoSection}>
-        <div className={styles.logo} />
+        <Link to="/" className={styles.logo}></Link>
       </div>
       <div className={styles.navSection}></div>
     </nav>
