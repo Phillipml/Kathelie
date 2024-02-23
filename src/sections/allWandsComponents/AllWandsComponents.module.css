@@ -1,0 +1,42 @@
+p {
+  margin: 0 auto;
+}
+.menu {
+  padding: 0% 20%;
+  list-style: none;
+  font-size: 8vh;
+  display: flex;
+  justify-content: space-between;
+  font-family: Tangerine, cursive;
+}
+.componentsImages {
+  width: 20%;
+}
+.listSingle {
+  width: 80%;
+  text-align: center;
+}
+.listSingle:hover {
+  transition: 0.5s;
+  font-size: 10vh;
+  cursor: pointer;
+}
+.imageGallery {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.componentsImages {
+  width: 20%;
+  height: auto;
+  margin: 10px;
+  transition: 0.5s;
+}
+.componentsImages:hover {
+  width: 23%;
+  filter: drop-shadow(0px 0px 4px #ffd700);
+}
