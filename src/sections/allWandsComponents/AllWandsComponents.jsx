@@ -66,7 +66,6 @@ const GalleryComponent = ({ selectedItem }) => {
 
   return (
     <div className={styles.galleryWraper}>
-      {/* <h2>Galeria de {selectedItem}</h2> */}
       <div className={styles.imageGallery}>
         {images.map((image, index) => (
           <img

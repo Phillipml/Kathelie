@@ -34,3 +34,11 @@
     box-shadow: 0 0 40px #592b99;
   }
 }
+
+@media screen and (max-width: 800px) {
+  .video {
+    width: 80%;
+    left: 50%;
+    transform: translatex(-50%);
+  }
+}

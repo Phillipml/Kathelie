@@ -27,15 +27,19 @@ h2 {
   height: auto;
   margin: 0 auto;
 }
+.ProcessStep > h4 {
+  text-align: center;
+}
 .arrow {
   width: 10%;
   height: auto;
 }
-.ProcessStep > h4 {
-  text-align: center;
-}
+
 @media screen and (max-width: 800px) {
   .processWraper {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .arrow {
+    transform: rotate(90deg);
   }
 }
