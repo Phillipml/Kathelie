@@ -11,7 +11,7 @@ h2 {
   height: auto;
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  gap: 20px;
+  gap: 2vh;
 }
 .ProcessStep {
   width: 100%;
@@ -37,8 +37,13 @@ h2 {
 
 @media screen and (max-width: 800px) {
   .processWraper {
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-flow: row;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
   }
+
   .arrow {
     transform: rotate(90deg);
   }

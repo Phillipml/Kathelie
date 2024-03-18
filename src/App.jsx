@@ -6,7 +6,8 @@ import Header from "./sections/header/Header";
 import HowAreMade from "./sections/howAreMade/HowAreMade";
 import Intro from "./sections/intro/Intro";
 import Process from "./sections/process/Process";
-import AllWandsComponents from "./sections/allWandsComponents/AllWandsComponents"; // Corrija o caminho de importação
+import AllWandsComponents from "./sections/allWandsComponents/AllWandsComponents";
+import Footer from "./sections/footer/Footer";
 
 function MainContent() {
   return (
@@ -33,6 +34,7 @@ function App() {
             element={<AllWandsComponents />}
           />
         </Routes>
+        <Footer />
       </>
     </Router>
   );

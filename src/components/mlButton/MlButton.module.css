@@ -1,0 +1,29 @@
+.mlButton {
+  width: 30vh;
+  height: auto;
+  margin: 2%;
+  padding: 0.5%;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(90deg, #ffd700 0%, #2d0081 100%);
+  transition: 0.5s;
+  box-shadow: 0 0 4px #592b99;
+  cursor: pointer;
+}
+.buttonIcon {
+  width: 30px;
+  padding: 4%;
+}
+@keyframes yellowGlow {
+  0% {
+    box-shadow: 0 0 10px #ffde26;
+  }
+  50% {
+    box-shadow: 0 0 20px #826e00;
+  }
+  100% {
+    box-shadow: 0 0 10px #ffde26;
+  }
+}

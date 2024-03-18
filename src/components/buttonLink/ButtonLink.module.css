@@ -1,0 +1,23 @@
+.btnLink {
+  width: 30vh;
+  height: auto;
+  margin: 2%;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: 0.5s;
+  cursor: pointer;
+  align-self: center;
+}
+.buttonIcon {
+  padding: 4%;
+}
+.btnLink:hover {
+  width: 33vh;
+}
+.btnTxt {
+  text-decoration: none;
+  color: white;
+}

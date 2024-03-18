@@ -1,0 +1,105 @@
+.footerWraper {
+  background-color: #18151c;
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 4px ridge #ffd700;
+  /* border-bottom: 4px ridge #ffd700; */
+}
+.footerSide {
+  width: 33.3%;
+  height: 80%;
+  padding: 2%;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+.contactBtn {
+  width: 60%;
+  height: auto;
+  padding: 2%;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(90deg, #0066cc 0%, #c500cc 100%);
+  transition: 0.5s;
+  box-shadow: 0 0 4px #592b99;
+  animation: purpleGlow infinite 2s;
+  cursor: pointer;
+}
+.contactBtn:hover {
+  width: 70%;
+  padding: 3.5%;
+}
+.btnIcon {
+  width: 30px;
+  padding: 4%;
+}
+
+.mlBtn {
+  width: 45%;
+  height: auto;
+  padding: 2%;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(90deg, #ffd700 0%, #2d0081 100%);
+  transition: 0.5s;
+  box-shadow: 0 0 4px #592b99;
+  animation: yellowGlow infinite 2s;
+  cursor: pointer;
+}
+.mlBtn:hover {
+  width: 50%;
+  padding: 3.5%;
+}
+
+.instaBtn {
+  width: 45%;
+  height: auto;
+  padding: 2%;
+  border-radius: 20px;
+  font-size: 2vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(90deg, #92008a 0%, #2d0081 100%);
+  transition: 0.5s;
+  box-shadow: 0 0 4px #592b99;
+  animation: pinkGlow infinite 2s;
+  cursor: pointer;
+}
+.instaBtn:hover {
+  width: 50%;
+  padding: 3.5%;
+}
+.instaIcon {
+  width: 40px;
+  padding: 4%;
+}
+
+@media screen and (max-width: 800px) {
+  .footerWraper {
+    flex-flow: column;
+  }
+  .footerSide {
+    width: 90%;
+    padding: 4%;
+  }
+  .contactBtn p,
+  .mlBtn p,
+  .instaBtn p {
+    margin: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* garante que o texto ocupe toda a altura do botão */
+  }
+}

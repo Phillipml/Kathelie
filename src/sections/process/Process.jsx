@@ -41,7 +41,7 @@ function Process() {
         </div>
         <div className={styles.ProcessStep}>
           <img className={styles.img} src={box} alt="Box Logo" />
-          <h4>Enviamos para você</h4>
+          <h4>Enviamos para você em até 15 dias</h4>
         </div>
         <div className={styles.ProcessStep}>
           <img className={styles.arrow} src={arrow} alt="Arrow Icon" />

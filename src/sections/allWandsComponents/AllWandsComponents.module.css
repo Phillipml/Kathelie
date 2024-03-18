@@ -22,28 +22,81 @@ p {
   cursor: pointer;
 }
 .imageGallery {
-  width: 80%;
+  width: 50%;
   margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2vh;
 }
-
+.imageContainer {
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+}
 .componentsImages {
-  width: 20%;
+  width: 40%;
   height: auto;
   margin: 10px;
   transition: 0.5s;
 }
 .componentsImages:hover {
-  width: 23%;
-  filter: drop-shadow(0px 0px 4px #ffd700);
+  width: 60%;
+  filter: drop-shadow(0px 0px 4px #9f5bff);
+  animation: purpleGlow infinite 2s;
+  text-align: center;
+  cursor: pointer;
+}
+.itemCode {
+  text-align: center;
+  font-size: 3vh;
+  transition: 0.5s;
+}
+.itemCode:hover {
+  font-size: 5vh;
+  animation: purpleGlow infinite 2s;
+}
+.imageContainer:hover .componentsImages,
+.imageContainer:hover h3 {
+  filter: drop-shadow(0px 0px 4px #9f5bff);
+  animation: purpleGlow infinite 2s;
+  font-size: 5vh;
+  width: 60%;
+}
+.imageGallery {
+  width: 50%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(, 1fr);
+  gap: 2vh;
+}
+.componentsImages {
+  width: 40%;
+  height: auto;
+  margin: 10px;
+  transition: 0.5s;
+}
+
+.itemCode {
+  text-align: center;
+  font-size: 3vh;
+  transition: 0.5s;
+}
+
+@keyframes purpleGlow {
+  0% {
+    filter: drop-shadow(0px 0px 4px #9f5bff);
+  }
+  50% {
+    filter: drop-shadow(0px 0px 4px #ffd400);
+  }
+  100% {
+    filter: drop-shadow(0px 0px 4px #9f5bff);
+  }
 }
 @media screen and (max-width: 800px) {
   p {
     width: 80%;
-    border-bottom: 1px solid #ffd700;
+
     padding-bottom: 10%;
   }
   .menu {
@@ -67,14 +120,11 @@ p {
     cursor: pointer;
   }
 
-  .componentsImages {
-    width: 80%;
-    height: auto;
-    margin: 10px;
-    transition: 0.5s;
-  }
-  .componentsImages:hover {
-    width: 90%;
-    filter: drop-shadow(0px 0px 4px #ffd700);
+  .imageContainer:hover .componentsImages,
+  .imageContainer:hover h3 {
+    filter: drop-shadow(0px 0px 4px #9f5bff);
+    animation: purpleGlow infinite 2s;
+    font-size: 5vh;
+    width: 100%;
   }
 }

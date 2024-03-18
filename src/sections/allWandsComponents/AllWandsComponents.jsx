@@ -35,30 +35,45 @@ import base8 from "../../assets/wandComponents/base/base8.png";
 import base9 from "../../assets/wandComponents/base/base9.png";
 
 const itemImages = {
-  Varinha: [wand1, wand2, wand3, wand4],
+  Varinha: [
+    { image: wand1, code: "wd1" },
+    { image: wand2, code: "wd2" },
+    { image: wand3, code: "wd3" },
+    { image: wand4, code: "wd4" },
+  ],
   Conector: [
-    connector1,
-    connector2,
-    connector3,
-    connector4,
-    connector5,
-    connector6,
-    connector7,
-    connector8,
-    connector9,
-    connector10,
+    { image: connector1, code: "cn1" },
+    { image: connector2, code: "cn2" },
+    { image: connector3, code: "cn3" },
+    { image: connector4, code: "cn4" },
+    { image: connector5, code: "cn5" },
+    { image: connector6, code: "cn6" },
+    { image: connector7, code: "cn7" },
+    { image: connector8, code: "cn8" },
+    { image: connector9, code: "cn9" },
+    { image: connector10, code: "cn10" },
   ],
   Empunhadura: [
-    handle1,
-    handle2,
-    handle3,
-    handle4,
-    handle5,
-    handle6,
-    handle7,
-    handle8,
+    { image: handle1, code: "hd1" },
+    { image: handle2, code: "hd2" },
+    { image: handle3, code: "hd3" },
+    { image: handle4, code: "hd4" },
+    { image: handle5, code: "hd5" },
+    { image: handle6, code: "hd6" },
+    { image: handle7, code: "hd7" },
+    { image: handle8, code: "hd8" },
   ],
-  Base: [base1, base2, base3, base4, base5, base6, base7, base8, base9],
+  Base: [
+    { image: base1, code: "bs1" },
+    { image: base2, code: "bs2" },
+    { image: base3, code: "bs3" },
+    { image: base4, code: "bs4" },
+    { image: base5, code: "bs5" },
+    { image: base6, code: "bs6" },
+    { image: base7, code: "bs7" },
+    { image: base8, code: "bs8" },
+    { image: base9, code: "bs9" },
+  ],
 };
 
 const GalleryComponent = ({ selectedItem }) => {
@@ -67,13 +82,16 @@ const GalleryComponent = ({ selectedItem }) => {
   return (
     <div className={styles.galleryWraper}>
       <div className={styles.imageGallery}>
-        {images.map((image, index) => (
-          <img
-            className={styles.componentsImages}
-            key={index}
-            src={image}
-            alt={`${selectedItem}-${index}`}
-          />
+        {images.map((item, index) => (
+          <div key={index} className={styles.imageContainer}>
+            <img
+              className={styles.componentsImages}
+              key={index}
+              src={item.image}
+              alt={`${selectedItem}-${index}`}
+            />
+            <h3 className={styles.itemCode}>{item.code}</h3>
+          </div>
         ))}
       </div>
     </div>
