@@ -1,4 +1,5 @@
 import AnimatedCursor from "react-animated-cursor";
+
 function Cursor() {
   return (
     <AnimatedCursor
@@ -10,6 +11,7 @@ function Cursor() {
       hasBlendMode={true}
       innerStyle={{
         backgroundColor: "#fff",
+        zIndex: 99999999, // Definindo zIndex diretamente no estilo inline
       }}
       outerStyle={{
         border: "3px solid #ffd700",
@@ -17,4 +19,5 @@ function Cursor() {
     />
   );
 }
+
 export default Cursor;

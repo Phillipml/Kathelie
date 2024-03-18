@@ -45,12 +45,14 @@
     z-index: 9999;
     position: fixed;
     top: 2vh;
-    right: 1vh;
+    right: 0;
     width: 7vh;
     height: 7vh;
-    background-color: green;
+    background-color: #92008a;
     border-radius: 50%;
+    box-shadow: 0 0 40px #ff45f6;
   }
+
   .MenuIcon {
     width: 50%;
     height: 50%;
@@ -86,14 +88,30 @@
   }
   .navSection {
     z-index: 999;
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: auto;
-    background-color: #592b99;
     display: flex;
+    position: fixed;
+    top: -900px;
+    width: 100%;
+    height: 50vh;
+    background-color: rgb(8, 0, 20);
     flex-flow: column;
     justify-content: center;
     align-items: center;
+    transition: 0.5s;
+    padding-top: 10%;
+    padding-bottom: 4%;
+  }
+  .mobileMenuLogo {
+    width: 60%;
+    height: 100%;
+    background-image: url("../../assets/images/kathelieLogo.svg");
+    background-size: 80%;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  .show {
+    top: 0;
   }
 }
