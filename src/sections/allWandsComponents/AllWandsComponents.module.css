@@ -66,19 +66,13 @@ p {
   width: 50%;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 2vh;
 }
 .componentsImages {
   width: 40%;
   height: auto;
   margin: 10px;
-  transition: 0.5s;
-}
-
-.itemCode {
-  text-align: center;
-  font-size: 3vh;
   transition: 0.5s;
 }
 
@@ -109,7 +103,7 @@ p {
     gap: 20px;
   }
   .componentsImages {
-    width: 10%;
+    width: 100%;
   }
   .listSingle {
     width: 70%;
@@ -126,5 +120,18 @@ p {
     animation: purpleGlow infinite 2s;
     font-size: 5vh;
     width: 100%;
+  }
+  .imageGallery {
+    width: 100%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 2vh;
+  }
+  .componentsImages {
+    width: 40%;
+    height: auto;
+    margin: 10px;
+    transition: 0.5s;
   }
 }

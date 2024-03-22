@@ -45,12 +45,12 @@
     z-index: 9999;
     position: fixed;
     top: 2vh;
-    right: 0;
+    right: 1vh;
     width: 7vh;
     height: 7vh;
     background-color: #92008a;
     border-radius: 50%;
-    box-shadow: 0 0 40px #ff45f6;
+    box-shadow: 0 0 10px #1a0019;
   }
 
   .MenuIcon {

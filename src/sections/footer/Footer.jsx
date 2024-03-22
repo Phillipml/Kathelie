@@ -16,7 +16,7 @@ function Footer() {
             buttonColor={["#1f6310", "#24c900"]}
             animationColor={["#ffde26", "#826e00"]}
             animationClass="greenGlow"
-            showShadow={true}
+            showShadow={false}
             link="http://192.168.0.11:5173/"
           />
         </div>
@@ -28,7 +28,7 @@ function Footer() {
             buttonColor={["#ffd700", "#2d0081"]}
             animationColor={["#ffde26", "#826e00"]}
             animationClass="yellowGlow"
-            showShadow={true}
+            showShadow={false}
             link="http://192.168.0.11:5173/"
           />
         </div>{" "}
@@ -40,7 +40,7 @@ function Footer() {
             buttonColor={["#92008a", "#2d0081"]}
             animationColor={["#ffde26", "#826e00"]}
             animationClass="pinkGlow"
-            showShadow={true}
+            showShadow={false}
             link="http://192.168.0.11:5173/"
             padding="5%"
             width="40px"

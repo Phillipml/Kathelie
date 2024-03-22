@@ -69,6 +69,10 @@ p {
   }
 }
 @media screen and (max-width: 800px) {
+  .imgContainer {
+    width: 120%;
+  }
+
   .img {
     margin: 10% auto;
   }
@@ -78,7 +82,7 @@ p {
 }
 @media screen and (max-width: 600px) {
   .imgContainer {
-    margin-top: 2vh;
+    margin-top: 4vh;
   }
   .img {
     width: 100%;
