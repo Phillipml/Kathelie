@@ -8,6 +8,7 @@ import Intro from "./sections/intro/Intro";
 import Process from "./sections/process/Process";
 import AllWandsComponents from "./sections/allWandsComponents/AllWandsComponents";
 import Footer from "./sections/footer/Footer";
+import WandGenerator from "./sections/wandGenerator/WandGenerator";
 
 function MainContent() {
   return (
@@ -33,6 +34,7 @@ function App() {
             path="/all-wands-components"
             element={<AllWandsComponents />}
           />
+          <Route path="/wand-generator" element={<WandGenerator />} />
         </Routes>
         <Footer />
       </>

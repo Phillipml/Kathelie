@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import styles from "./AllWandsComponents.module.css";
+import styles from "./WandGenerator.module.css";
 
+// Importe as imagens
 import wand1 from "../../assets/wandComponents/wand/wand1.png";
 import wand2 from "../../assets/wandComponents/wand/wand2.png";
 import wand3 from "../../assets/wandComponents/wand/wand3.png";
@@ -33,6 +34,7 @@ import base7 from "../../assets/wandComponents/base/base7.png";
 import base8 from "../../assets/wandComponents/base/base8.png";
 import base9 from "../../assets/wandComponents/base/base9.png";
 
+// Defina as imagens em um objeto
 const itemImages = {
   Varinha: [
     { image: wand1, code: "wd1" },
@@ -75,82 +77,118 @@ const itemImages = {
   ],
 };
 
-const GalleryComponent = ({ selectedItem }) => {
-  const images = itemImages[selectedItem] || [];
+// Componente principal
+// Componente principal
+function WandGenerator() {
+  // Estado para controlar a seleção dos itens
+  const [selectedItems, setSelectedItems] = useState({
+    Varinha: null,
+    Conector: null,
+    Empunhadura: null,
+    Base: null,
+  });
 
+  // Estado para controlar a visibilidade das categorias
+  const [categoryVisibility, setCategoryVisibility] = useState({
+    Varinha: false,
+    Conector: false,
+    Empunhadura: false,
+    Base: false,
+  });
+
+  // Função para alternar a visibilidade das imagens de uma categoria
+  const toggleCategoryImages = (category) => {
+    setCategoryVisibility({
+      ...categoryVisibility,
+      [category]: !categoryVisibility[category],
+    });
+  };
+
+  // Função para definir o item selecionado e fechar a categoria correspondente
+  const selectItem = (category, itemCode) => {
+    setSelectedItems({ ...selectedItems, [category]: { category, itemCode } });
+    // Fechar a categoria correspondente
+    setCategoryVisibility({
+      ...categoryVisibility,
+      [category]: false,
+    });
+  };
+
+  // Função para renderizar as opções do menu
+  const renderMenuOptions = () => {
+    return Object.entries(itemImages).map(([category, items]) => (
+      <div className={styles.menu} key={category}>
+        <button
+          className={styles.btnMenu}
+          onClick={() => toggleCategoryImages(category)}
+        >
+          {category}
+        </button>
+        <div
+          style={{
+            display: categoryVisibility[category] ? "flex" : "none",
+            flexWrap: "wrap",
+          }}
+        >
+          {items.map((item) => (
+            <div className={styles.ChooseItem} key={item.code}>
+              <img
+                src={item.image}
+                alt={item.code}
+                style={{
+                  width: "100px",
+                  height: "100px",
+                  margin: "5px",
+                  cursor: "pointer",
+                  display: categoryVisibility[category]
+                    ? "inline-block"
+                    : "none",
+                }}
+                onClick={() => selectItem(category, item.code)}
+              />
+              <p>{item.code}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    ));
+  };
+
+  // Renderização do componente
   return (
-    <div className={styles.galleryWraper}>
-      <div className={styles.imageGallery}>
-        {images.map((item, index) => (
-          <div key={index} className={styles.imageContainer}>
-            <img
-              className={styles.componentsImages}
-              key={index}
-              src={item.image}
-              alt={`${selectedItem}-${index}`}
-            />
-            <h3 className={styles.itemCode}>{item.code}</h3>
-          </div>
-        ))}
+    <div>
+      <h2>Selecione um item de cada categoria:</h2>
+      {renderMenuOptions()}
+      <div>
+        <h3>Itens Selecionados:</h3>
+        <div className={styles.selectedWraper}>
+          {Object.values(selectedItems).map(
+            (item, index) =>
+              item && (
+                <div key={index} className={styles.itemSingle}>
+                  <p className={styles.categoryTitle}>{item.category}</p>
+                  <p className={styles.codeTitle}>{item.itemCode}</p>
+                  {itemImages[item.category].map((img) => (
+                    <img
+                      key={img.code}
+                      src={img.image}
+                      alt={img.code}
+                      style={{
+                        width: "100px",
+                        height: "100px",
+                        margin: "5px",
+                        display:
+                          img.code === item.itemCode ? "inline-block" : "none",
+                      }}
+                    />
+                  ))}
+                </div>
+              )
+          )}
+        </div>
       </div>
     </div>
   );
-};
+}
 
-const MenuComponent = ({ onSelect }) => {
-  const [selectedItem, setSelectedItem] = useState("");
-
-  const handleItemClick = (item) => {
-    setSelectedItem(item);
-    onSelect(item);
-  };
-
-  return (
-    <div className={styles.galleryWrapper}>
-      <h2>Crie Sua Própria Varinha Mágica!</h2>
-      <p>
-        Você está no lugar certo para dar vida à sua própria varinha
-        personalizada. Explore nossa seleção de componentes mágicos e escolha os
-        as partes que mais ressoam com você. Temos tudo o que você precisa para
-        criar a varinha dos seus sonhos. Deixe sua imaginação voar enquanto você
-        navega pelos nossos itens disponíveis. Comece sua jornada mágica agora
-        mesmo!
-      </p>
-      <ul className={styles.menu}>
-        {Object.keys(itemImages).map((item, index) => (
-          <li
-            className={styles.listSingle}
-            key={index}
-            onClick={() => handleItemClick(item)}
-            style={{
-              color: selectedItem === item ? "#ffd700" : "white",
-              textShadow:
-                selectedItem === item
-                  ? "0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 30px #ffd700, 0 0 40px #ffd700, 0 0 50px #ffd700, 0 0 60px #ffd700, 0 0 70px #ffd700, 0 0 80px #ffd700"
-                  : "none",
-            }}
-          >
-            {item}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
-const AllWandsComponents = () => {
-  const [selectedItem, setSelectedItem] = useState("");
-
-  const handleSelect = (item) => {
-    setSelectedItem(item);
-  };
-
-  return (
-    <div>
-      <MenuComponent onSelect={handleSelect} />
-      <GalleryComponent selectedItem={selectedItem} />
-    </div>
-  );
-};
-
-export default AllWandsComponents;
+export default WandGenerator;
