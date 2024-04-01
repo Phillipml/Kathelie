@@ -1,7 +1,6 @@
 import React, { useState, useRef } from "react";
 import styles from "./WandGenerator.module.css";
 import html2canvas from "html2canvas";
-import jsPDF from "jspdf";
 import ColorSelect from "../../components/colorSelect/ColorSelect";
 import Input from "../../components/input/Input";
 import loadingGif from "../../assets/icons/loading.gif";
@@ -164,7 +163,7 @@ function WandGenerator() {
     let contentHeight = 2000;
 
     if (window.innerWidth < 800) {
-      contentWidth = 400;
+      contentWidth = 450;
       contentHeight = 1920;
     }
 
@@ -190,7 +189,7 @@ function WandGenerator() {
 
   return (
     <div>
-      {!headerVisible && <Header />} {/* Oculta o header */}
+      {!headerVisible && <Header />}
       <div ref={contentRef} className={styles.WandGeneratorWraper}>
         <div className={styles.inputSize}>
           <Input placeHolder="Usuário Mercado Livre" width="50%" padding="2%" />

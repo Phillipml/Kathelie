@@ -126,6 +126,9 @@ textArea {
   resize: none;
 }
 @media screen and (max-width: 800px) {
+  .loadingOverlay > h2 {
+    font-size: 7vh;
+  }
   .loadingGif {
     width: 50%;
     height: auto;
