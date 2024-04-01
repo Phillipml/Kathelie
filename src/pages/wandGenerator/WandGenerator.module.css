@@ -1,0 +1,148 @@
+.WandGeneratorWraper {
+  padding: 5vh;
+}
+.loadingOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(45, 0, 129, 0.5);
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 999999;
+}
+.loadingOverlay > h2 {
+  font-size: 15vh;
+}
+
+.loadingGif {
+  width: 20%;
+  height: auto;
+}
+
+.ChooseItem {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.ChooseItem > p {
+  text-align: center;
+}
+.selectedWraper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.itemSingle {
+  width: 10%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+.categoryTitle {
+  font-family: "Tangerine", cursive;
+  font-size: 5vh;
+  color: #ffd400;
+  text-align: center;
+}
+.codeTitle {
+  font-size: 5vh;
+  text-align: center;
+}
+.menu {
+  display: grid;
+}
+.btnMenu {
+  width: 20%;
+  padding: 1%;
+  margin: 0.5% auto;
+  border: unset;
+  border-radius: 2vh;
+  background: linear-gradient(90deg, rgb(146, 0, 138) 0%, rgb(45, 0, 129) 100%);
+}
+.selectedItensTitle {
+  font-family: Tangerine, cursive;
+  font-size: 5vh;
+  text-align: center;
+  color: #ffd400;
+  animation: glowing 2s infinite;
+}
+
+@keyframes glowing {
+  0% {
+    text-shadow: 0px 0px 0px rgba(163, 139, 0, 0.6);
+  }
+  50% {
+    text-shadow: 0px 0px 18px rgba(163, 139, 0, 0.6);
+  }
+  100% {
+    text-shadow: 0px 0px 0px rgba(163, 139, 0, 0.6);
+  }
+}
+.inputSize {
+  margin: 0 auto;
+  width: 50%;
+}
+.colorSelectSingle {
+  width: 10%;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.textArea {
+  display: block;
+  width: 70%;
+  height: 25vh;
+  text-align: center;
+  margin: 0 auto;
+  margin-bottom: 2vh;
+  padding: 2%;
+  color: #ffffff;
+  background-color: #322147;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  transition: 0.2s;
+}
+.textArea:focus {
+  color: white;
+  background-color: #927c00;
+  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+    rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset,
+    rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px,
+    rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px,
+    rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+textArea {
+  resize: none;
+}
+@media screen and (max-width: 800px) {
+  .loadingGif {
+    width: 50%;
+    height: auto;
+  }
+  .btnMenu {
+    width: 50%;
+    padding: 2%;
+    font-size: 2vh;
+    margin-bottom: 2%;
+  }
+  .inputSize {
+    width: 100%;
+  }
+  .itemSingle {
+    width: 40%;
+  }
+  .colorSelectSingle {
+    width: 50%;
+  }
+}

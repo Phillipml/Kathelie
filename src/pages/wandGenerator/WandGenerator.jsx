@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styles from "./WandGenerator.module.css";
+import html2canvas from "html2canvas";
+import jsPDF from "jspdf";
+import ColorSelect from "../../components/colorSelect/ColorSelect";
+import Input from "../../components/input/Input";
+import loadingGif from "../../assets/icons/loading.gif";
+import Header from "../../sections/header/Header";
 
-// Importe as imagens
 import wand1 from "../../assets/wandComponents/wand/wand1.png";
 import wand2 from "../../assets/wandComponents/wand/wand2.png";
 import wand3 from "../../assets/wandComponents/wand/wand3.png";
@@ -34,7 +39,6 @@ import base7 from "../../assets/wandComponents/base/base7.png";
 import base8 from "../../assets/wandComponents/base/base8.png";
 import base9 from "../../assets/wandComponents/base/base9.png";
 
-// Defina as imagens em um objeto
 const itemImages = {
   Varinha: [
     { image: wand1, code: "wd1" },
@@ -77,10 +81,10 @@ const itemImages = {
   ],
 };
 
-// Componente principal
-// Componente principal
 function WandGenerator() {
-  // Estado para controlar a seleção dos itens
+  const [loading, setLoading] = useState(false);
+  const [headerVisible, setHeaderVisible] = useState(true);
+
   const [selectedItems, setSelectedItems] = useState({
     Varinha: null,
     Conector: null,
@@ -88,7 +92,6 @@ function WandGenerator() {
     Base: null,
   });
 
-  // Estado para controlar a visibilidade das categorias
   const [categoryVisibility, setCategoryVisibility] = useState({
     Varinha: false,
     Conector: false,
@@ -96,7 +99,8 @@ function WandGenerator() {
     Base: false,
   });
 
-  // Função para alternar a visibilidade das imagens de uma categoria
+  const contentRef = useRef(null);
+
   const toggleCategoryImages = (category) => {
     setCategoryVisibility({
       ...categoryVisibility,
@@ -104,17 +108,14 @@ function WandGenerator() {
     });
   };
 
-  // Função para definir o item selecionado e fechar a categoria correspondente
   const selectItem = (category, itemCode) => {
     setSelectedItems({ ...selectedItems, [category]: { category, itemCode } });
-    // Fechar a categoria correspondente
     setCategoryVisibility({
       ...categoryVisibility,
       [category]: false,
     });
   };
 
-  // Função para renderizar as opções do menu
   const renderMenuOptions = () => {
     return Object.entries(itemImages).map(([category, items]) => (
       <div className={styles.menu} key={category}>
@@ -154,36 +155,102 @@ function WandGenerator() {
     ));
   };
 
-  // Renderização do componente
+  const handleDownloadImage = () => {
+    setHeaderVisible(false);
+
+    setLoading(true);
+
+    let contentWidth = 1400;
+    let contentHeight = 2000;
+
+    if (window.innerWidth < 800) {
+      contentWidth = 400;
+      contentHeight = 1920;
+    }
+
+    html2canvas(contentRef.current, {
+      backgroundColor: window.getComputedStyle(document.body).backgroundColor,
+      width: contentWidth,
+      height: contentHeight,
+      scale: window.devicePixelRatio,
+    }).then((canvas) => {
+      const imgData = canvas.toDataURL("image/png");
+
+      const downloadLink = document.createElement("a");
+      downloadLink.href = imgData;
+      downloadLink.download = "wandImage.png";
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+
+      setLoading(false);
+
+      setHeaderVisible(true);
+    });
+  };
+
   return (
     <div>
-      <h2>Selecione um item de cada categoria:</h2>
-      {renderMenuOptions()}
-      <div>
-        <h3>Itens Selecionados:</h3>
-        <div className={styles.selectedWraper}>
-          {Object.values(selectedItems).map(
-            (item, index) =>
-              item && (
-                <div key={index} className={styles.itemSingle}>
-                  <p className={styles.categoryTitle}>{item.category}</p>
-                  <p className={styles.codeTitle}>{item.itemCode}</p>
-                  {itemImages[item.category].map((img) => (
-                    <img
-                      key={img.code}
-                      src={img.image}
-                      alt={img.code}
-                      style={{
-                        width: "100px",
-                        height: "100px",
-                        margin: "5px",
-                        display:
-                          img.code === item.itemCode ? "inline-block" : "none",
-                      }}
-                    />
-                  ))}
-                </div>
-              )
+      {!headerVisible && <Header />} {/* Oculta o header */}
+      <div ref={contentRef} className={styles.WandGeneratorWraper}>
+        <div className={styles.inputSize}>
+          <Input placeHolder="Usuário Mercado Livre" width="50%" padding="2%" />
+        </div>
+        <h2>Selecione um item de cada categoria:</h2>
+        {renderMenuOptions()}
+        <div>
+          <div className={styles.selectedWraper}>
+            {Object.values(selectedItems).map(
+              (item, index) =>
+                item && (
+                  <div key={index} className={styles.itemSingle}>
+                    <p className={styles.categoryTitle}>{item.category}</p>
+                    <p className={styles.codeTitle}>{item.itemCode}</p>
+                    {itemImages[item.category].map((img) => (
+                      <img
+                        key={img.code}
+                        src={img.image}
+                        alt={img.code}
+                        style={{
+                          width: "100px",
+                          height: "100px",
+                          margin: "5px",
+                          display:
+                            img.code === item.itemCode
+                              ? "inline-block"
+                              : "none",
+                        }}
+                      />
+                    ))}
+                  </div>
+                )
+            )}
+          </div>
+          <h2>Selecione até 5 cores:</h2>
+          <div className={styles.selectedWraper}>
+            <div className={styles.colorSelectSingle}>
+              <ColorSelect />
+            </div>
+          </div>
+        </div>
+        <div className={styles.inputSize}>
+          <textarea
+            className={styles.textArea}
+            placeholder="Observações como 'varinha: cor chocolate, base: vermelho escarlate', ou qualquer outra informação que queira adicionar"
+          />
+        </div>
+        <div className={styles.menu}>
+          <button onClick={handleDownloadImage} className={styles.btnMenu}>
+            Salvar como PDF
+          </button>
+          {loading && (
+            <div className={styles.loadingOverlay}>
+              <img
+                src={loadingGif}
+                alt="Loading"
+                className={styles.loadingGif}
+              />
+              <h2>Gerando Imagem</h2>
+            </div>
           )}
         </div>
       </div>

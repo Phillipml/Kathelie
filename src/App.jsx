@@ -6,9 +6,9 @@ import Header from "./sections/header/Header";
 import HowAreMade from "./sections/howAreMade/HowAreMade";
 import Intro from "./sections/intro/Intro";
 import Process from "./sections/process/Process";
-import AllWandsComponents from "./sections/allWandsComponents/AllWandsComponents";
+import AllWandsComponents from "./pages/allWandsComponents/AllWandsComponents";
 import Footer from "./sections/footer/Footer";
-import WandGenerator from "./sections/wandGenerator/WandGenerator";
+import WandGenerator from "./pages/wandGenerator/WandGenerator";
 
 function MainContent() {
   return (
@@ -25,7 +25,7 @@ function App() {
     <Router>
       <>
         <Cursor />
-        <StarCursor />
+        {/* <StarCursor /> */}
         <Header />
         <Routes>
           <Route path="/" element={<MainContent />} />
