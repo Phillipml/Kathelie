@@ -30,27 +30,27 @@ Kathelie Varinhas é uma aplicação web para venda de um produto onde permite a
 
 1. Clone este repositório em sua máquina local usando o seguinte comando:
 
-\`\`\`bash
+```bash
 git clone https://github.com/Phillipml/kathelie
-\`\`\`
+```
 
 2. Navegue até o diretório do projeto:
 
-\`\`\`bash
+```bash
 cd kathelie
-\`\`\`
+```
 
 3. Instale as dependências necessárias:
 
-\`\`\`bash
+```bash
 npm install
-\`\`\`
+```
 
 4. Inicie o servidor de desenvolvimento:
 
-\`\`\`bash
+```bash
 npm run dev
-\`\`\`
+```
 
 5. O aplicativo estará disponível em seu navegador em [http://localhost:5137](http://localhost:5137).
 
