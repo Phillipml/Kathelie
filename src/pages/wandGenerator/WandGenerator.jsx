@@ -163,8 +163,8 @@ function WandGenerator() {
     let contentHeight = 2000;
 
     if (window.innerWidth < 800) {
-      contentWidth = 450;
-      contentHeight = 1920;
+      contentWidth = 400;
+      contentHeight = 4000;
     }
 
     html2canvas(contentRef.current, {
@@ -224,13 +224,13 @@ function WandGenerator() {
                 )
             )}
           </div>
-          <h2>Selecione até 5 cores:</h2>
-          <div className={styles.selectedWraper}>
-            <div className={styles.colorSelectSingle}>
-              <ColorSelect />
-            </div>
-          </div>
+
+          <ColorSelect maxColors={3} label="Varinha" />
+          <ColorSelect maxColors={3} label="Empunhadura" />
+          <ColorSelect maxColors={2} label="Conector" />
+          <ColorSelect maxColors={3} label="Base" />
         </div>
+
         <div className={styles.inputSize}>
           <textarea
             className={styles.textArea}

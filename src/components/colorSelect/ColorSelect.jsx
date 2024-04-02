@@ -39,12 +39,11 @@ const colors = [
   { hex: "#532e26", name: "Chocolate", textColor: "#ffffff" },
   { hex: "#423029", name: "Rústico", textColor: "#ffffff" },
 ];
-
-const ColorSelect = () => {
+const ColorSelect = ({ maxColors, label }) => {
   const [selectedColors, setSelectedColors] = useState([]);
 
   const handleColorClick = (color) => {
-    if (selectedColors.length < 5) {
+    if (selectedColors.length < maxColors) {
       if (
         selectedColors.some((selectedColor) => selectedColor.hex === color.hex)
       ) {
@@ -52,6 +51,8 @@ const ColorSelect = () => {
       } else {
         setSelectedColors([...selectedColors, color]);
       }
+    } else {
+      alert(`Selecione até ${maxColors} cores para ${label}.`);
     }
   };
 
@@ -62,83 +63,78 @@ const ColorSelect = () => {
   };
 
   return (
-    <div>
-      <div className={styles.selectColorsWrap}>
-        {colors.map((color, index) => (
-          <div key={index} className={styles.selectColorsSingle}>
-            <div
-              onClick={() => handleColorClick(color)}
-              className={styles.colorBox}
-              style={{
-                backgroundColor: color.hex,
-                color: color.textColor,
-              }}
-            >
-              {selectedColors.includes(color) && (
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  viewBox="0 0 16 16"
-                  style={{ position: "absolute", top: "5px", right: "5px" }}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleRemoveColor(index);
-                  }}
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M3.146 5.146a.5.5 0 0 1 .708 0L8 9.293l4.146-4.147a.5.5 0 1 1 .708.708L8.707 10l4.147 4.146a.5.5 0 0 1-.708.708L8 10.707l-4.146 4.147a.5.5 0 0 1-.708-.708L7.293 10 3.146 5.854a.5.5 0 0 1 0-.708z"
-                  />
-                </svg>
-              )}
+    <div className={styles.colorSelectContainer}>
+      <div className={styles.colorPickerContainer}>
+        <h3 className={styles.title}>
+          Escolha até {maxColors} cores para {label}
+        </h3>
+        <div className={styles.selectColorsWrap}>
+          {colors.map((color, index) => (
+            <div key={index} className={styles.selectColorsSingle}>
+              <div
+                onClick={() => handleColorClick(color)}
+                className={styles.colorBox}
+                style={{
+                  backgroundColor: color.hex,
+                  color: color.textColor,
+                }}
+              >
+                {selectedColors.includes(color) && (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    viewBox="0 0 16 16"
+                    style={{ position: "absolute", top: "5px", right: "5px" }}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleRemoveColor(index);
+                    }}
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M3.146 5.146a.5.5 0 0 1 .708 0L8 9.293l4.146-4.147a.5.5 0 1 1 .708.708L8.707 10l4.147 4.146a.5.5 0 0 1-.708.708L8 10.707l-4.146 4.147a.5.5 0 0 1-.708-.708L7.293 10 3.146 5.854a.5.5 0 0 1 0-.708z"
+                    />
+                  </svg>
+                )}
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-      <h3>Cores Selecionadas</h3>
-      <div className={styles.selectedColorsWrap}>
-        {selectedColors.map((color, index) => (
-          <div
-            key={index}
-            style={{
-              marginRight: "10px",
-              height: "20vh",
-              cursor: "pointer",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              marginBottom: "10px",
-            }}
-            onClick={() => handleRemoveColor(index)}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              viewBox="0 0 16 16"
-              style={{ marginBottom: "1vh" }}
-            >
-              <path
-                fill-rule="evenodd"
-                d="M3.146 5.146a.5.5 0 0 1 .708 0L8 9.293l4.146-4.147a.5.5 0 1 1 .708.708L8.707 10l4.147 4.146a.5.5 0 0 1-.708.708L8 10.707l-4.146 4.147a.5.5 0 0 1-.708-.708L7.293 10 3.146 5.854a.5.5 0 0 1 0-.708z"
-              />
-            </svg>
+      <div className={styles.selectedColorsContainer}>
+        <h3 className={styles.title}>Cores Selecionadas</h3>
+        <div className={styles.selectedColorsWrap}>
+          {selectedColors.map((color, index) => (
             <div
-              style={{
-                backgroundColor: color.hex,
-                width: "30px",
-                height: "30px",
-                border: "1px solid #000",
-                borderRadius: "5px",
-                marginBottom: "5px",
-              }}
-            />
-            <span>{color.name}</span>
-          </div>
-        ))}
+              key={index}
+              className={styles.selectedColor}
+              onClick={() => handleRemoveColor(index)}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                viewBox="0 0 16 16"
+                className={styles.removeIcon}
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M3.146 5.146a.5.5 0 0 1 .708 0L8 9.293l4.146-4.147a.5.5 0 1 1 .708.708L8.707 10l4.147 4.146a.5.5 0 0 1-.708.708L8 10.707l-4.146 4.147a.5.5 0 0 1-.708-.708L7.293 10 3.146 5.854a.5.5 0 0 1 0-.708z"
+                />
+              </svg>
+              <div
+                className={styles.selectedColorBox}
+                style={{
+                  backgroundColor: color.hex,
+                }}
+              ></div>
+              <span>{color.name}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

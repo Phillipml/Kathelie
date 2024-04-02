@@ -88,14 +88,7 @@
   margin: 0 auto;
   width: 50%;
 }
-.colorSelectSingle {
-  width: 10%;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+
 .textArea {
   display: block;
   width: 70%;
@@ -144,8 +137,5 @@ textArea {
   }
   .itemSingle {
     width: 40%;
-  }
-  .colorSelectSingle {
-    width: 50%;
   }
 }
