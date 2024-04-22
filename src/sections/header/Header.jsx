@@ -4,6 +4,7 @@ import MlIcon from "../../assets/icons/ML.svg";
 import wandIcon from "../../assets/icons/wand.svg";
 import homeMenu from "../../assets/icons/homeMenu.svg";
 import wppLogo from "../../assets/icons/whatsappLogo.svg";
+import instagramLogo from "../../assets/icons/instagrаmLogo.svg";
 import openMenu from "../../assets/icons/openMenu.svg";
 import closeMenu from "../../assets/icons/closeMenu.svg";
 import styles from "./Header.module.css";
@@ -58,22 +59,13 @@ function Header() {
           padding="0.5%"
         />
         <ButtonLink
-          imageUrl={MlIcon}
-          buttonText="Compre já!"
+          imageUrl={instagramLogo}
+          buttonText="@kathelieVarinhas"
           buttonColor={["#92008a", "#2d0081"]}
           animationColor={["#ffde26", "#826e00"]}
           showShadow={false}
           link="http://192.168.0.11:5173/"
-          padding="0.5%"
-        />
-        <ButtonLink
-          imageUrl={wppLogo}
-          buttonText="(31)99999-9999"
-          buttonColor={["#1f6310", "#24c900"]}
-          animationColor={["#ffde26", "#826e00"]}
-          animationClass="greenGlow"
-          showShadow={false}
-          padding="0.5%"
+          padding="0.85%"
         />
       </div>
     </nav>

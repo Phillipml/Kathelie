@@ -83,7 +83,7 @@ const itemImages = {
 function WandGenerator() {
   const [loading, setLoading] = useState(false);
   const [headerVisible, setHeaderVisible] = useState(true);
-
+  const [userName, setUserName] = useState("");
   const [selectedItems, setSelectedItems] = useState({
     Varinha: null,
     Conector: null,
@@ -153,7 +153,9 @@ function WandGenerator() {
       </div>
     ));
   };
-
+  const handleChange = (event) => {
+    setUserName(event.target.value);
+  };
   const handleDownloadImage = () => {
     setHeaderVisible(false);
 
@@ -177,7 +179,7 @@ function WandGenerator() {
 
       const downloadLink = document.createElement("a");
       downloadLink.href = imgData;
-      downloadLink.download = "wandImage.png";
+      downloadLink.download = `${userName}_wand.png`;
       document.body.appendChild(downloadLink);
       downloadLink.click();
 
@@ -192,7 +194,12 @@ function WandGenerator() {
       {!headerVisible && <Header />}
       <div ref={contentRef} className={styles.WandGeneratorWraper}>
         <div className={styles.inputSize}>
-          <Input placeHolder="Usuário Mercado Livre" width="50%" padding="2%" />
+          <Input
+            placeHolder="Usuário Mercado Livre"
+            width="50%"
+            padding="2%"
+            onChange={handleChange}
+          />
         </div>
         <h2>Selecione um item de cada categoria:</h2>
         {renderMenuOptions()}

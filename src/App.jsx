@@ -9,6 +9,7 @@ import Process from "./sections/process/Process";
 import AllWandsComponents from "./pages/allWandsComponents/AllWandsComponents";
 import Footer from "./sections/footer/Footer";
 import WandGenerator from "./pages/wandGenerator/WandGenerator";
+import Email from "./sections/email/Email";
 
 function MainContent() {
   return (
@@ -17,6 +18,7 @@ function MainContent() {
       <Process />
       <HowAreMade />
       <BtnToWandComponents />
+      <Email />
     </>
   );
 }

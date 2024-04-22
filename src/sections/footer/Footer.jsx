@@ -9,18 +9,6 @@ function Footer() {
     <div>
       <div className={styles.footerWraper}>
         <div className={styles.footerSide}>
-          <h3>Fale com a gente!</h3>
-          <ButtonLink
-            imageUrl={wppLogo}
-            buttonText="(31)99999-9999"
-            buttonColor={["#1f6310", "#24c900"]}
-            animationColor={["#ffde26", "#826e00"]}
-            animationClass="greenGlow"
-            showShadow={false}
-            link="http://192.168.0.11:5173/"
-          />
-        </div>
-        <div className={styles.footerSide}>
           <h3>Faça seu pedido!</h3>
           <ButtonLink
             imageUrl={mlLogo}

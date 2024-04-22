@@ -14,7 +14,7 @@
   flex-flow: column;
   align-items: center;
 }
-.footerSide:nth-of-type(-n + 2) {
+.footerSide:nth-of-type(-n + 1) {
   border-right: 1px solid #ffd700;
 }
 .contactBtn {
