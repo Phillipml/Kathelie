@@ -13,7 +13,7 @@ function BtnToWandComponents() {
         showShadow={true}
         animationClass="purpleGlow"
         linkTo="all-wands-components"
-        padding="5%"
+        padding="1%"
         width="100px"
       />
     </div>

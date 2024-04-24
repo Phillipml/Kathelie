@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./AllWandsComponents.module.css";
 
 import wand1 from "../../assets/wandComponents/wand/wand1.png";
@@ -77,6 +77,11 @@ const itemImages = {
 
 const GalleryComponent = ({ selectedItem }) => {
   const images = itemImages[selectedItem] || [];
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const toggleExpand = () => {
+    setIsExpanded(!isExpanded);
+  };
 
   return (
     <div className={styles.galleryWraper}>
@@ -84,10 +89,13 @@ const GalleryComponent = ({ selectedItem }) => {
         {images.map((item, index) => (
           <div key={index} className={styles.imageContainer}>
             <img
-              className={styles.componentsImages}
+              className={`${styles.componentsImages} ${
+                isExpanded ? styles.expanded : ""
+              }`}
               key={index}
               src={item.image}
               alt={`${selectedItem}-${index}`}
+              onClick={() => toggleExpand()}
             />
             <h3 className={styles.itemCode}>{item.code}</h3>
           </div>
@@ -98,7 +106,7 @@ const GalleryComponent = ({ selectedItem }) => {
 };
 
 const MenuComponent = ({ onSelect }) => {
-  const [selectedItem, setSelectedItem] = useState("");
+  const [selectedItem, setSelectedItem] = useState("Varinha");
 
   const handleItemClick = (item) => {
     setSelectedItem(item);
@@ -139,11 +147,15 @@ const MenuComponent = ({ onSelect }) => {
 };
 
 const AllWandsComponents = () => {
-  const [selectedItem, setSelectedItem] = useState("");
+  const [selectedItem, setSelectedItem] = useState("Varinha");
 
   const handleSelect = (item) => {
     setSelectedItem(item);
   };
+
+  useEffect(() => {
+    setSelectedItem("Varinha");
+  }, []);
 
   return (
     <div>

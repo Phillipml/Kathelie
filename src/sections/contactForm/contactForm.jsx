@@ -1,10 +1,10 @@
 import { useState } from "react";
 import emailjs from "@emailjs/browser";
-import styles from "./Email.module.css";
+import styles from "./contactForm.module.css";
 import Input from "../../components/input/Input";
 import loadingGif from "../../assets/icons/loading.gif";
 
-function Email() {
+function contactForm() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -42,7 +42,7 @@ function Email() {
   }
 
   return (
-    <div className="container">
+    <div className={styles.content}>
       <h1 className={styles.title}>Tire suas dúvidas</h1>
 
       <form className={styles.form} onSubmit={sendEmail}>
@@ -87,4 +87,4 @@ function Email() {
   );
 }
 
-export default Email;
+export default contactForm;

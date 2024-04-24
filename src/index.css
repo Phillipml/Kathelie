@@ -15,8 +15,9 @@
 }
 
 body {
-  margin: 0;
+  margin: 0 auto;
   min-width: 320px;
+  max-width: 1400px;
   min-height: 100vh;
   background-color: #18151c;
 }
