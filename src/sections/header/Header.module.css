@@ -88,10 +88,12 @@
   }
   .navSection {
     z-index: 999;
+    margin: 0 auto;
     display: flex;
     position: fixed;
     top: -900px;
     width: 100%;
+    max-width: 1400px;
     height: 50vh;
     background-color: rgb(8, 0, 20);
     flex-flow: column;

@@ -161,8 +161,8 @@ function WandGenerator() {
 
     setLoading(true);
 
-    let contentWidth = 1400;
-    let contentHeight = 2000;
+    let contentWidth = 2000;
+    let contentHeight = 2700;
 
     if (window.innerWidth < 800) {
       contentWidth = 400;
@@ -227,6 +227,7 @@ function WandGenerator() {
                         }}
                       />
                     ))}
+                    <ColorSelect maxColors={3} label="Varinha" />
                   </div>
                 )
             )}
