@@ -1,5 +1,6 @@
 .WandGeneratorWraper {
   padding: 5vh;
+  max-width: 1200px;
 }
 .loadingOverlay {
   position: fixed;
@@ -32,18 +33,18 @@
   text-align: center;
 }
 .selectedWraper {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
 }
 .itemSingle {
   width: 100%;
-  display: flex;
-  flex-flow: column;
-  justify-content: center;
-  align-items: center;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
 }
+
 .categoryTitle {
   font-family: "Tangerine", cursive;
   font-size: 5vh;

@@ -1,7 +1,7 @@
 .colorSelectContainer {
   display: grid;
   gap: 2vh;
-  grid-template-columns: repeat(auto-fit, minmax(40%, 1fr));
+  grid-template-columns: repeat(2, 1fr);
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px ridge #ffd700;
@@ -23,8 +23,8 @@
 .colorBox {
   border: 1px ridge #ffd700;
   box-shadow: 0 0 1px 1px #ffffff;
-  width: 5vh;
-  height: 5vh;
+  width: 20px;
+  height: 260px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -60,11 +60,11 @@
 }
 @media screen and (max-width: 800px) {
   .colorSelectContainer {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(1, 1fr);
   }
   .colorBox {
-    width: 4vh;
-    height: 4vh;
+    width: 30px;
+    height: 30px;
   }
   .colorPickerContainer {
     border-right: unset;

@@ -194,6 +194,7 @@ function WandGenerator() {
       {!headerVisible && <Header />}
       <div ref={contentRef} className={styles.WandGeneratorWraper}>
         <div className={styles.inputSize}>
+          <h2>Digite o seu nome de usuário do Mercado Livre</h2>
           <Input
             placeHolder="Usuário Mercado Livre"
             width="50%"
@@ -216,10 +217,11 @@ function WandGenerator() {
                         key={img.code}
                         src={img.image}
                         alt={img.code}
+                        className={styles.img}
                         style={{
                           width: "100px",
                           height: "100px",
-                          margin: "5px",
+                          margin: "0 auto",
                           display:
                             img.code === item.itemCode
                               ? "inline-block"
@@ -227,16 +229,22 @@ function WandGenerator() {
                         }}
                       />
                     ))}
-                    <ColorSelect maxColors={3} label="Varinha" />
+                    {item.category === "Varinha" && (
+                      <ColorSelect maxColors={1} label="Varinha" />
+                    )}
+                    {item.category === "Conector" && (
+                      <ColorSelect maxColors={2} label="Conector" />
+                    )}
+                    {item.category === "Empunhadura" && (
+                      <ColorSelect maxColors={3} label="Empunhadura" />
+                    )}
+                    {item.category === "Base" && (
+                      <ColorSelect maxColors={2} label="Base" />
+                    )}
                   </div>
                 )
             )}
           </div>
-
-          <ColorSelect maxColors={3} label="Varinha" />
-          <ColorSelect maxColors={3} label="Empunhadura" />
-          <ColorSelect maxColors={2} label="Conector" />
-          <ColorSelect maxColors={3} label="Base" />
         </div>
 
         <div className={styles.inputSize}>
