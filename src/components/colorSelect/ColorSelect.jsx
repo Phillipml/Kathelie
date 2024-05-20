@@ -39,7 +39,7 @@ const colors = [
   { hex: "#532e26", name: "Chocolate", textColor: "#ffffff" },
   { hex: "#423029", name: "Rústico", textColor: "#ffffff" },
 ];
-const ColorSelect = ({ maxColors, label }) => {
+const ColorSelect = ({ maxColors, label, visible }) => {
   const [selectedColors, setSelectedColors] = useState([]);
 
   const handleColorClick = (color) => {
@@ -63,8 +63,14 @@ const ColorSelect = ({ maxColors, label }) => {
   };
 
   return (
-    <div className={styles.colorSelectContainer}>
-      <div className={styles.colorPickerContainer}>
+    <div
+      className={styles.colorSelectContainer}
+      style={{ display: visible ? "grid" : "block" }}
+    >
+      <div
+        className={styles.colorPickerContainer}
+        style={{ display: visible ? "grid" : "none" }}
+      >
         <h3 className={styles.title}>
           Escolha até {maxColors} cores para {label}
         </h3>

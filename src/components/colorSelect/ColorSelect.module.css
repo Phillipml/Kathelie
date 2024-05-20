@@ -23,8 +23,8 @@
 .colorBox {
   border: 1px ridge #ffd700;
   box-shadow: 0 0 1px 1px #ffffff;
-  width: 20px;
-  height: 260px;
+  width: 30px;
+  height: 30px;
   margin: 0 auto;
   display: flex;
   align-items: center;

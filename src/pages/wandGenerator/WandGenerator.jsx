@@ -98,6 +98,7 @@ function WandGenerator() {
     Base: false,
   });
 
+  const [colorPickerVisible, setColorPickerVisible] = useState(true); // Estado para controlar a visibilidade do color picker
   const contentRef = useRef(null);
 
   const toggleCategoryImages = (category) => {
@@ -153,40 +154,46 @@ function WandGenerator() {
       </div>
     ));
   };
+
   const handleChange = (event) => {
     setUserName(event.target.value);
   };
+
   const handleDownloadImage = () => {
     setHeaderVisible(false);
-
-    setLoading(true);
+    setColorPickerVisible(false);
+    setTimeout(() => {
+      setLoading(true);
+    }, 200);
 
     let contentWidth = 2000;
-    let contentHeight = 2700;
+    let contentHeight = 4000;
 
     if (window.innerWidth < 800) {
       contentWidth = 400;
       contentHeight = 4000;
     }
 
-    html2canvas(contentRef.current, {
-      backgroundColor: window.getComputedStyle(document.body).backgroundColor,
-      width: contentWidth,
-      height: contentHeight,
-      scale: window.devicePixelRatio,
-    }).then((canvas) => {
-      const imgData = canvas.toDataURL("image/png");
+    setTimeout(() => {
+      html2canvas(contentRef.current, {
+        backgroundColor: window.getComputedStyle(document.body).backgroundColor,
+        width: contentWidth,
+        height: contentHeight,
+        scale: window.devicePixelRatio,
+      }).then((canvas) => {
+        const imgData = canvas.toDataURL("image/png");
 
-      const downloadLink = document.createElement("a");
-      downloadLink.href = imgData;
-      downloadLink.download = `${userName}_wand.png`;
-      document.body.appendChild(downloadLink);
-      downloadLink.click();
+        const downloadLink = document.createElement("a");
+        downloadLink.href = imgData;
+        downloadLink.download = `${userName}_wand.png`;
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
 
-      setLoading(false);
-
-      setHeaderVisible(true);
-    });
+        setLoading(false);
+        setHeaderVisible(true);
+        setColorPickerVisible(true);
+      });
+    }, 100);
   };
 
   return (
@@ -230,16 +237,32 @@ function WandGenerator() {
                       />
                     ))}
                     {item.category === "Varinha" && (
-                      <ColorSelect maxColors={1} label="Varinha" />
+                      <ColorSelect
+                        maxColors={1}
+                        label="Varinha"
+                        visible={colorPickerVisible}
+                      />
                     )}
                     {item.category === "Conector" && (
-                      <ColorSelect maxColors={2} label="Conector" />
+                      <ColorSelect
+                        maxColors={2}
+                        label="Conector"
+                        visible={colorPickerVisible}
+                      />
                     )}
                     {item.category === "Empunhadura" && (
-                      <ColorSelect maxColors={3} label="Empunhadura" />
+                      <ColorSelect
+                        maxColors={3}
+                        label="Empunhadura"
+                        visible={colorPickerVisible}
+                      />
                     )}
                     {item.category === "Base" && (
-                      <ColorSelect maxColors={2} label="Base" />
+                      <ColorSelect
+                        maxColors={2}
+                        label="Base"
+                        visible={colorPickerVisible}
+                      />
                     )}
                   </div>
                 )
