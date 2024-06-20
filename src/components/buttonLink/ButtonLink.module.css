@@ -1,8 +1,8 @@
 .btnLink {
-  width: 30vh;
+  width: 28vh;
   height: auto;
   margin: 2%;
-  border-radius: 20px;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,6 +10,7 @@
   transition: 0.5s;
   cursor: pointer;
   align-self: center;
+  font-size: 13px;
 }
 .buttonIcon {
   padding: 4%;

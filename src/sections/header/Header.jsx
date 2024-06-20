@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import MlIcon from "../../assets/icons/ML.svg";
+import ShopeeIcon from "../../assets/icons/shopeeLogo.svg";
 import wandIcon from "../../assets/icons/wand.svg";
 import homeMenu from "../../assets/icons/homeMenu.svg";
 import wppLogo from "../../assets/icons/whatsappLogo.svg";
@@ -15,8 +16,12 @@ function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
-    setMenuIcon(menuIcon === openMenu ? closeMenu : openMenu);
+    setMenuIcon(isMenuOpen ? openMenu : closeMenu);
     setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleMenuClick = () => {
+    setIsMenuOpen(false);
   };
 
   return (
@@ -38,6 +43,7 @@ function Header() {
           linkTo="/"
           padding="0.5%"
           width="20px"
+          onClick={handleMenuClick}
         />
         <ButtonLink
           imageUrl={wandIcon}
@@ -48,24 +54,39 @@ function Header() {
           linkTo="all-wands-components"
           padding="0.5%"
           width="40px"
+          onClick={handleMenuClick}
         />
         <ButtonLink
-          imageUrl={MlIcon}
-          buttonText="Compre já!"
-          buttonColor={["#ffd700", "#2d0081"]}
-          animationColor={["#ffde26", "#826e00"]}
-          showShadow={false}
-          link="http://192.168.0.11:5173/"
-          padding="0.5%"
-        />
-        <ButtonLink
-          imageUrl={instagramLogo}
-          buttonText="@kathelieVarinhas"
+          imageUrl={wandIcon}
+          buttonText="Gerador de varinhas!"
           buttonColor={["#92008a", "#2d0081"]}
           animationColor={["#ffde26", "#826e00"]}
           showShadow={false}
-          link="http://192.168.0.11:5173/"
+          linkTo="wand-generator"
+          padding="0.5%"
+          width="40px"
+          onClick={handleMenuClick}
+        />
+        <ButtonLink
+          imageUrl={ShopeeIcon}
+          buttonText="Compre Shopee!"
+          buttonColor={["#cc4100", "#120600"]}
+          animationColor={["#ffde26", "#826e00"]}
+          showShadow={false}
+          linkTo="https://shopee.com.br/product/407950839/23993043716/"
+          padding="0.1%"
+          openInNewTab={true}
+          onClick={handleMenuClick}
+        />
+        <ButtonLink
+          imageUrl={instagramLogo}
+          buttonText="@kathelievarinhas"
+          buttonColor={["#92008a", "#2d0081"]}
+          animationColor={["#ffde26", "#826e00"]}
+          showShadow={false}
+          linkTo="https://www.instagram.com/kathelievarinhas/"
           padding="0.85%"
+          onClick={handleMenuClick}
         />
       </div>
     </nav>

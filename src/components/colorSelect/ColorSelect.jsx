@@ -39,7 +39,7 @@ const colors = [
   { hex: "#532e26", name: "Chocolate", textColor: "#ffffff" },
   { hex: "#423029", name: "Rústico", textColor: "#ffffff" },
 ];
-const ColorSelect = ({ maxColors, label, visible }) => {
+const ColorSelect = ({ maxColors, label, visible, selectedLabel }) => {
   const [selectedColors, setSelectedColors] = useState([]);
 
   const handleColorClick = (color) => {
@@ -72,7 +72,8 @@ const ColorSelect = ({ maxColors, label, visible }) => {
         style={{ display: visible ? "grid" : "none" }}
       >
         <h3 className={styles.title}>
-          Escolha até {maxColors} cores para {label}
+          Escolha {maxColors}
+          {label}
         </h3>
         <div className={styles.selectColorsWrap}>
           {colors.map((color, index) => (
@@ -110,7 +111,7 @@ const ColorSelect = ({ maxColors, label, visible }) => {
         </div>
       </div>
       <div className={styles.selectedColorsContainer}>
-        <h3 className={styles.title}>Cores Selecionadas</h3>
+        <h3 className={styles.title}>{selectedLabel}</h3>
         <div className={styles.selectedColorsWrap}>
           {selectedColors.map((color, index) => (
             <div

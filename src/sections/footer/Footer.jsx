@@ -1,37 +1,42 @@
 import styles from "./Footer.module.css";
 import wppLogo from "../../assets/icons/whatsappLogo.svg";
 import mlLogo from "../../assets/icons/ML.svg";
-import instaLogo from "../../assets/icons/instagrаmLogo.svg";
+import instagramLogo from "../../assets/icons/instagrаmLogo.svg";
 import ButtonLink from "../../components/buttonLink/ButtonLink";
+import ShopeeIcon from "../../assets/icons/shopeeLogo.svg";
 
 function Footer() {
+  const handleMenuClick = () => {
+    setIsMenuOpen(false);
+  };
   return (
     <div>
       <div className={styles.footerWraper}>
         <div className={styles.footerSide}>
           <h3>Faça seu pedido!</h3>
           <ButtonLink
-            imageUrl={mlLogo}
-            buttonText="Compre já!"
-            buttonColor={["#ffd700", "#2d0081"]}
+            imageUrl={ShopeeIcon}
+            buttonText="Compre Shopee!"
+            buttonColor={["#cc4100", "#120600"]}
             animationColor={["#ffde26", "#826e00"]}
-            animationClass="yellowGlow"
             showShadow={false}
-            link="http://192.168.0.11:5173/"
+            linkTo="https://shopee.com.br/product/407950839/23993043716/"
+            padding="0.1%"
+            openInNewTab={true}
+            onClick={handleMenuClick}
           />
         </div>{" "}
         <div className={styles.footerSide}>
           <h3>Nos siga no Instagram!</h3>
           <ButtonLink
-            imageUrl={instaLogo}
-            buttonText="@KathelieVarinhas"
+            imageUrl={instagramLogo}
+            buttonText="@kathelievarinhas"
             buttonColor={["#92008a", "#2d0081"]}
             animationColor={["#ffde26", "#826e00"]}
-            animationClass="pinkGlow"
             showShadow={false}
-            link="http://192.168.0.11:5173/"
-            padding="5%"
-            width="40px"
+            link="https://www.instagram.com/kathelievarinhas/"
+            padding="0.85%"
+            onClick={handleMenuClick}
           />
         </div>
       </div>

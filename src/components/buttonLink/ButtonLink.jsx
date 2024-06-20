@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import styles from "./ButtonLink.module.css";
-import { Link } from "react-router-dom";
 
 const ButtonLink = ({
   imageUrl,
@@ -12,6 +11,8 @@ const ButtonLink = ({
   animationClass,
   padding,
   width,
+  openInNewTab,
+  onClick,
 }) => {
   const buttonStyle = {
     background: `linear-gradient(90deg, ${buttonColor[0]} 0%, ${buttonColor[1]} 100%)`,
@@ -70,10 +71,13 @@ const ButtonLink = ({
     : "";
 
   return (
-    <Link
-      to={linkTo}
+    <a
+      href={linkTo}
       className={`${styles.btnTxt} ${styles.btnLink} ${animationClass}`}
       style={buttonStyle}
+      onClick={onClick}
+      target={openInNewTab ? "_blank" : undefined}
+      rel={openInNewTab ? "noopener noreferrer" : undefined}
     >
       <style>{keyframesStyle}</style>
       <img
@@ -83,7 +87,7 @@ const ButtonLink = ({
         alt="Button Icon"
       />
       <span>{buttonText}</span>
-    </Link>
+    </a>
   );
 };
 
@@ -96,6 +100,8 @@ ButtonLink.propTypes = {
   linkTo: PropTypes.string.isRequired,
   animationClass: PropTypes.string,
   padding: PropTypes.string,
+  openInNewTab: PropTypes.bool,
+  onClick: PropTypes.func,
 };
 
 ButtonLink.defaultProps = {
@@ -104,6 +110,7 @@ ButtonLink.defaultProps = {
   showShadow: true,
   padding: "2%",
   width: "30px",
+  openInNewTab: false,
 };
 
 export default ButtonLink;

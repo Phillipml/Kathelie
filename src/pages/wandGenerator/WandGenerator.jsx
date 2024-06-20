@@ -98,7 +98,7 @@ function WandGenerator() {
     Base: false,
   });
 
-  const [colorPickerVisible, setColorPickerVisible] = useState(true); // Estado para controlar a visibilidade do color picker
+  const [colorPickerVisible, setColorPickerVisible] = useState(true);
   const contentRef = useRef(null);
 
   const toggleCategoryImages = (category) => {
@@ -166,12 +166,12 @@ function WandGenerator() {
       setLoading(true);
     }, 200);
 
-    let contentWidth = 2000;
-    let contentHeight = 4000;
+    let contentWidth = 1800;
+    let contentHeight = 2000;
 
     if (window.innerWidth < 800) {
       contentWidth = 400;
-      contentHeight = 4000;
+      contentHeight = 2000;
     }
 
     setTimeout(() => {
@@ -200,10 +200,10 @@ function WandGenerator() {
     <div>
       {!headerVisible && <Header />}
       <div ref={contentRef} className={styles.WandGeneratorWraper}>
+        <h2>Código de compra</h2>
         <div className={styles.inputSize}>
-          <h2>Digite o seu nome de usuário do Mercado Livre</h2>
           <Input
-            placeHolder="Usuário Mercado Livre"
+            placeHolder="Código de compra"
             width="50%"
             padding="2%"
             onChange={handleChange}
@@ -236,44 +236,27 @@ function WandGenerator() {
                         }}
                       />
                     ))}
-                    {item.category === "Varinha" && (
-                      <ColorSelect
-                        maxColors={1}
-                        label="Varinha"
-                        visible={colorPickerVisible}
-                      />
-                    )}
-                    {item.category === "Conector" && (
-                      <ColorSelect
-                        maxColors={2}
-                        label="Conector"
-                        visible={colorPickerVisible}
-                      />
-                    )}
-                    {item.category === "Empunhadura" && (
-                      <ColorSelect
-                        maxColors={3}
-                        label="Empunhadura"
-                        visible={colorPickerVisible}
-                      />
-                    )}
-                    {item.category === "Base" && (
-                      <ColorSelect
-                        maxColors={2}
-                        label="Base"
-                        visible={colorPickerVisible}
-                      />
-                    )}
                   </div>
                 )
             )}
           </div>
         </div>
-
+        <h2>Hora de escolher suas cores favoritas:</h2>
+        <ColorSelect
+          maxColors={1}
+          label=" cor para a varinha"
+          visible={colorPickerVisible}
+        />
+        <ColorSelect
+          maxColors={5}
+          label=" cores utilizarmos nas demais partes"
+          visible={colorPickerVisible}
+          selectedLabel="Cor selecionada"
+        />
         <div className={styles.inputSize}>
           <textarea
             className={styles.textArea}
-            placeholder="Observações como 'varinha: cor chocolate, base: vermelho escarlate', ou qualquer outra informação que queira adicionar"
+            placeholder="OBSERVAÇÕES COMO: 'BASE: VERMELHO ESCARLATE COM DETALHES MAGENTA', OU QUALQUER OUTRA INFORMAÇÃO QUE QUEIRA ADICIONAR"
           />
         </div>
         <div className={styles.menu}>

@@ -1,6 +1,6 @@
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Cursor from "./components/cursor/Cursor";
-import StarCursor from "./components/starCursor/starCursor";
 import BtnToWandComponents from "./sections/btnToWandComponents/BtnToWandComponents";
 import Header from "./sections/header/Header";
 import HowAreMade from "./sections/howAreMade/HowAreMade";
@@ -22,16 +22,32 @@ function MainContent() {
     </>
   );
 }
+
+function isMobileDevice() {
+  const userAgent = navigator.userAgent.toLowerCase();
+  return (
+    userAgent.includes("mobile") ||
+    userAgent.includes("tablet") ||
+    userAgent.includes("iphone") ||
+    userAgent.includes("ipad") ||
+    userAgent.includes("android")
+  );
+}
+
 function App() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    setIsMobile(isMobileDevice());
+  }, []);
+
   return (
     <Router>
       <>
-        <Cursor />
-        {/* <StarCursor /> */}
+        {!isMobile && <Cursor />}
         <Header />
         <Routes>
           <Route path="/" element={<MainContent />} />
-
           <Route
             path="/all-wands-components"
             element={<AllWandsComponents />}
