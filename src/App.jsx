@@ -10,6 +10,7 @@ import AllWandsComponents from "./pages/allWandsComponents/AllWandsComponents";
 import Footer from "./sections/footer/Footer";
 import WandGenerator from "./pages/wandGenerator/WandGenerator";
 import Contact from "./sections/contactForm/contactForm";
+import BtnToShopee from "./sections/btnToShopee/BtnToShopee";
 
 function MainContent() {
   return (
@@ -17,6 +18,7 @@ function MainContent() {
       <Intro />
       <Process />
       <HowAreMade />
+      <BtnToShopee />
       <BtnToWandComponents />
       <Contact />
     </>

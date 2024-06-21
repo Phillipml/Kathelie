@@ -1,6 +1,7 @@
 .btnWraper {
   width: 100%;
   height: auto;
+  background-color: #322147;
   padding-bottom: 4%;
   display: flex;
   flex-flow: column;
