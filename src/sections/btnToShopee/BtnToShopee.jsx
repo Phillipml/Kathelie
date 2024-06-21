@@ -8,7 +8,7 @@ function BtnToShopee() {
   };
   return (
     <div className={styles.btnWraper}>
-      <h2>Que tal dar uma olhada nas nossas peças?</h2>
+      <h2>Faça já seu pedido!</h2>
       <ButtonLink
         imageUrl={ShopeeIcon}
         buttonText="Compre Shopee!"
