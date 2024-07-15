@@ -72,7 +72,7 @@ const ColorSelect = ({ maxColors, label, visible, selectedLabel }) => {
         style={{ display: visible ? "grid" : "none" }}
       >
         <h3 className={styles.title}>
-          Escolha {maxColors}
+          Escolha
           {label}
         </h3>
         <div className={styles.selectColorsWrap}>

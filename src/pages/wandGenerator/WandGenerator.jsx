@@ -99,6 +99,7 @@ function WandGenerator() {
   });
 
   const [colorPickerVisible, setColorPickerVisible] = useState(true);
+  const [silverOrGold, setSilverOrGold] = useState("");
   const contentRef = useRef(null);
 
   const toggleCategoryImages = (category) => {
@@ -114,6 +115,10 @@ function WandGenerator() {
       ...categoryVisibility,
       [category]: false,
     });
+  };
+
+  const handleCheckboxChange = (event) => {
+    setSilverOrGold(event.target.value);
   };
 
   const renderMenuOptions = () => {
@@ -160,6 +165,27 @@ function WandGenerator() {
   };
 
   const handleDownloadImage = () => {
+    // Check which items are missing
+    const missingItems = Object.keys(selectedItems).filter(
+      (key) => selectedItems[key] === null
+    );
+
+    if (missingItems.length > 0) {
+      alert(
+        `Por favor, selecione um item para as seguintes categorias: ${missingItems.join(
+          ", "
+        )}.`
+      );
+      return;
+    }
+
+    if (!silverOrGold) {
+      alert(
+        "Por favor, selecione se gostaria de acrescentar prata ou dourado a sua varinha."
+      );
+      return;
+    }
+
     setHeaderVisible(false);
     setColorPickerVisible(false);
     setTimeout(() => {
@@ -244,25 +270,56 @@ function WandGenerator() {
         <h2>Hora de escolher suas cores favoritas:</h2>
         <ColorSelect
           maxColors={1}
-          label=" cor para a varinha"
+          label=" 1 cor para a varinha"
           visible={colorPickerVisible}
         />
         <ColorSelect
           maxColors={5}
-          label=" cores utilizarmos nas demais partes"
+          label=" até 5 cores utilizarmos nas demais partes"
           visible={colorPickerVisible}
           selectedLabel="Cor selecionada"
         />
-        <div className={styles.inputSize}>
-          <textarea
-            className={styles.textArea}
-            placeholder="OBSERVAÇÕES COMO: 'BASE: VERMELHO ESCARLATE COM DETALHES MAGENTA', OU QUALQUER OUTRA INFORMAÇÃO QUE QUEIRA ADICIONAR"
-          />
+        <h2>Você gostaria de acrescentar prata ou dourado a sua varinha?</h2>
+        <div className={styles.checkbox}>
+          <label>
+            <input
+              type="radio"
+              name="silverOrGold"
+              value="prata"
+              checked={silverOrGold === "prata"}
+              onChange={handleCheckboxChange}
+            />
+            Prata
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="silverOrGold"
+              value="dourado"
+              checked={silverOrGold === "dourado"}
+              onChange={handleCheckboxChange}
+            />
+            Dourado
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="silverOrGold"
+              value="não"
+              checked={silverOrGold === "não"}
+              onChange={handleCheckboxChange}
+            />
+            Não
+          </label>
         </div>
         <div className={styles.menu}>
-          <button onClick={handleDownloadImage} className={styles.btnMenu}>
-            Salvar como PDF
+          <button
+            onClick={handleDownloadImage}
+            className={`${styles.btnSpace} ${styles.btnMenu}`}
+          >
+            Gerar Pedido
           </button>
+
           {loading && (
             <div className={styles.loadingOverlay}>
               <img

@@ -34,7 +34,7 @@ function Footer() {
             buttonColor={["#92008a", "#2d0081"]}
             animationColor={["#ffde26", "#826e00"]}
             showShadow={false}
-            link="https://www.instagram.com/kathelievarinhas/"
+            linkTo="https://www.instagram.com/kathelievarinhas/"
             padding="0.85%"
             onClick={handleMenuClick}
           />
