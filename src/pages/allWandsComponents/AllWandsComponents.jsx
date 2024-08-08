@@ -32,6 +32,7 @@ import base6 from "../../assets/wandComponents/base/base6.png";
 import base7 from "../../assets/wandComponents/base/base7.png";
 import base8 from "../../assets/wandComponents/base/base8.png";
 import base9 from "../../assets/wandComponents/base/base9.png";
+import base10 from "../../assets/wandComponents/base/base10.png";
 
 const itemImages = {
   Varinha: [
@@ -72,6 +73,7 @@ const itemImages = {
     { image: base7, code: "bs7" },
     { image: base8, code: "bs8" },
     { image: base9, code: "bs9" },
+    { image: base10, code: "bs10" },
   ],
 };
 

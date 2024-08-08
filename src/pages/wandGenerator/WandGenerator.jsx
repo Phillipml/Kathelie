@@ -37,6 +37,7 @@ import base6 from "../../assets/wandComponents/base/base6.png";
 import base7 from "../../assets/wandComponents/base/base7.png";
 import base8 from "../../assets/wandComponents/base/base8.png";
 import base9 from "../../assets/wandComponents/base/base9.png";
+import base10 from "../../assets/wandComponents/base/base10.png";
 
 const itemImages = {
   Varinha: [
@@ -77,13 +78,14 @@ const itemImages = {
     { image: base7, code: "bs7" },
     { image: base8, code: "bs8" },
     { image: base9, code: "bs9" },
+    { image: base10, code: "bs10" },
   ],
 };
 
 function WandGenerator() {
   const [loading, setLoading] = useState(false);
   const [headerVisible, setHeaderVisible] = useState(true);
-  const [userName, setUserName] = useState("");
+  const [userCode, setuserCode] = useState("");
   const [selectedItems, setSelectedItems] = useState({
     Varinha: null,
     Conector: null,
@@ -146,9 +148,6 @@ function WandGenerator() {
                   height: "100px",
                   margin: "5px",
                   cursor: "pointer",
-                  display: categoryVisibility[category]
-                    ? "inline-block"
-                    : "none",
                 }}
                 onClick={() => selectItem(category, item.code)}
               />
@@ -159,16 +158,19 @@ function WandGenerator() {
       </div>
     ));
   };
-
+  const regex = /^[A-Za-z]{2}\d{4}$/;
   const handleChange = (event) => {
-    setUserName(event.target.value);
+    setuserCode(event.target.value);
   };
 
   const handleDownloadImage = () => {
-    // Check which items are missing
     const missingItems = Object.keys(selectedItems).filter(
       (key) => selectedItems[key] === null
     );
+    if (!regex.test(userCode.trim())) {
+      alert("Digite um código de compra válido.");
+      return;
+    }
 
     if (missingItems.length > 0) {
       alert(
@@ -183,6 +185,11 @@ function WandGenerator() {
       alert(
         "Por favor, selecione se gostaria de acrescentar prata ou dourado a sua varinha."
       );
+      return;
+    }
+
+    if (!userCode.trim()) {
+      alert("Por favor, insira o código de compra.");
       return;
     }
 
@@ -211,7 +218,7 @@ function WandGenerator() {
 
         const downloadLink = document.createElement("a");
         downloadLink.href = imgData;
-        downloadLink.download = `${userName}_wand.png`;
+        downloadLink.download = `${userCode}_wand.png`;
         document.body.appendChild(downloadLink);
         downloadLink.click();
 
